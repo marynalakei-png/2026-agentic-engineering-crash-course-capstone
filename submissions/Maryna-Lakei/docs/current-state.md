@@ -6,12 +6,12 @@
 
 ## Last Updated
 
-- **Date and time:** 2026-10-02 18:05:00 (Europe/Kyiv)
+- **Date and time:** 2026-10-02 19:52:00 (Europe/Kyiv)
 - **Current phase:** Phase 4
 - **Last completed gate:** none
-- **Active change:** none (`add-result-review` archived)
-- **Progress:** A successful Generate shows three labeled sections: User Story, Acceptance Criteria, and Clarifying Questions. A later success replaces the previous result. The owner confirmed both behaviors with the live OpenAI model on 2026-10-02, without reloading the page. Failure copy is still the next slice.
-- **Next task:** Do not start `add-generation-failure` until the owner asks. Do not commit a key.
+- **Active change:** none (all four capability slices archived)
+- **Progress:** All four approved slices are complete. A generation failure shows "Generation failed. You can try Generate again." Empty input still shows only "Enter a business request." The owner confirmed both failure cases, the empty-input message, and a later successful replacement on 2026-10-02 with the factory fake model.
+- **Next task:** Phase 5, cross-cutting hardening (gate G5), has not started. Do not start it, a QA pack, a deploy, or another slice until the owner asks. Do not commit a key.
 - **Claims:**
   - Plan approved — evidence: `docs/mvp-capability-plan.md` status line
   - Red run before generation code — evidence: `npm run test:run` failed with `Cannot find module './parse-generation'` and `Cannot find module './generate'`; Chromium success test failed because `user-story` was absent. Existing validation tests stayed green (13).
@@ -30,6 +30,15 @@
   - Vision pass — evidence: `docs/qa/vision-report.json` (`met: true`) and stills in `docs/qa/vision/`
   - Slice archived — evidence: `openspec/changes/archive/2026-10-02-add-result-review/`
   - Live result-review check — evidence: `docs/qa/2026-10-02-add-result-review-live-smoke.md`. Owner report on 2026-10-02: the first live Generate showed User Story, Acceptance Criteria, and Clarifying Questions. Without a reload, a changed source request and a second Generate replaced that result. Only the new three sections remained.
+  - Generation-failure red run — evidence: before sections 2–4, `npm run test:run` had 5 failed and 51 passed because `lib/requirements/generation-failure.ts` did not exist and fake mode still returned the weekly fixture for `[[provider-error]]` and `[[timeout]]`. `npm run test:e2e` had 3 failed and 11 passed because the failure sentence was absent. The timeout Chromium test hit its 10 second cap. Empty, whitespace, weekly, and monthly tests stayed green.
+  - Generation-failure unit tests green — evidence: `npm run test:run` on 2026-10-02, 56 passed
+  - Generation-failure Chromium tests green — evidence: `npm run test:e2e` on 2026-10-02, 14 passed
+  - Generation-failure lint and build green — evidence: `npm run lint` exit 0 (5 existing unused-variable warnings in tests) and `npm run build` exit 0 on 2026-10-02
+  - OpenSpec strict validate passed — evidence: `add-generation-failure` and `--all` (6 passed)
+  - Generation-failure review clean — evidence: `openspec/changes/archive/2026-10-02-add-generation-failure/review-findings.json` (`clean: true`). Code review, security review, and spec audit each returned no findings. Spec coverage: 5 scenarios implemented.
+  - Slice archived — evidence: `openspec/changes/archive/2026-10-02-add-generation-failure/`
+  - Generation-failure browser smoke — evidence: desktop Chromium against http://127.0.0.1:3000 on 2026-10-02 18:39 Europe/Kyiv. The server was started with `REQUIREMENTS_MODEL_MODE=fake`, `REQUIREMENTS_FAKE_DEADLINE_MS=1500`, and `LLM_API_KEY` empty. Empty and whitespace showed only "Enter a business request." and left Generate enabled. The weekly request showed the three headings and the weekly fixture, with no failure sentence. `[[provider-error]]` showed the failure sentence in an alert after 1321 ms, left the field unchanged, re-enabled Generate, and kept the weekly story. `[[timeout]]` did the same after 1827 ms. The monthly-budget request then replaced the weekly story with the finance-lead fixture and cleared the failure sentence. No Internal Server Error. Request hosts were only 127.0.0.1:3000.
+  - Owner generation-failure check — evidence: `docs/qa/2026-10-02-add-generation-failure-owner-smoke.md`. Owner report on 2026-10-02, factory fake model: the provider-error and timeout scenarios each showed "Generation failed. You can try Generate again."; empty input showed only "Enter a business request."; a later normal request showed a new User Story, Acceptance Criteria, and Clarifying Questions and replaced the previous result. No API key was used.
 
 ## Source Of Truth
 
@@ -41,13 +50,14 @@
 
 ## OpenSpec Status
 
-Five baseline specs. Active changes: none. Archived: `2026-10-02-add-request-intake`, `2026-10-02-add-requirement-generation`, `2026-10-02-add-result-review`.
+Five baseline specs. Active changes: none. Archived: `2026-10-02-add-request-intake`, `2026-10-02-add-requirement-generation`, `2026-10-02-add-result-review`, `2026-10-02-add-generation-failure`.
 
 ## Completed Changes
 
 - `add-request-intake`
 - `add-requirement-generation`
 - `add-result-review`
+- `add-generation-failure`
 
 ## Validation Commands
 
@@ -61,6 +71,6 @@ From `submissions/Maryna-Lakei/`: `npm run lint`, `npm run test:run`, `npm run t
 
 ## Agent Rules / Gotchas
 
-- Scope and the capability plan are approved. Do not start `add-generation-failure` until the owner asks.
+- Scope and the capability plan are approved. All four slices are archived. Do not start Phase 5 until the owner asks.
 - Do not renumber FR/NFR/TC/BC ids.
 - Do not archive OpenSpec changes before implementation and smoke test.

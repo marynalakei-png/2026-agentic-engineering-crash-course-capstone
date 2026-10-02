@@ -9,6 +9,7 @@ import { expect, test, type Page, type Request } from "@playwright/test";
 const RAW_REQUEST_NAME = "Raw business request";
 const GENERATE_NAME = "Generate";
 const EMPTY_MESSAGE = "Enter a business request.";
+const GENERATION_FAILURE_MESSAGE = "Generation failed. You can try Generate again.";
 const RAW_REQUEST = "Need a weekly sales report for the regional team";
 const STORY =
   "As a regional manager, I want a weekly sales report, so that I can review team performance.";
@@ -111,6 +112,9 @@ test.describe("requirement generation", () => {
     const requests = trackGeneration(page);
     await generate.click();
     await expect(page.getByText(EMPTY_MESSAGE, { exact: true })).toBeVisible();
+    await expect(
+      page.getByText(GENERATION_FAILURE_MESSAGE, { exact: true }),
+    ).toHaveCount(0);
     await expect(generate).toBeEnabled();
     await page.waitForTimeout(1000);
     expect(requests).toEqual([]);
@@ -132,6 +136,9 @@ test.describe("requirement generation", () => {
     const requests = trackGeneration(page);
     await generate.click();
     await expect(page.getByText(EMPTY_MESSAGE, { exact: true })).toBeVisible();
+    await expect(
+      page.getByText(GENERATION_FAILURE_MESSAGE, { exact: true }),
+    ).toHaveCount(0);
     await expect(generate).toBeEnabled();
     await expect(field).toHaveValue("   ");
     await page.waitForTimeout(1000);

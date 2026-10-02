@@ -17,6 +17,7 @@ export default defineConfig({
     env: {
       REQUIREMENTS_MODEL_MODE: "fake",
       LLM_API_KEY: "",
+      REQUIREMENTS_FAKE_DEADLINE_MS: "1500",
     },
   },
   projects: [

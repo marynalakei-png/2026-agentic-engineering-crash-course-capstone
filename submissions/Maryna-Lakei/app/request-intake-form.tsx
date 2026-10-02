@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import { generateFromRequest } from "@/lib/requirements/actions";
+import { generationFailureMessage } from "@/lib/requirements/generation-failure";
 import {
   RESULT_SECTION_LABELS,
   applyGenerationOutcome,
@@ -27,6 +28,7 @@ export function RequestIntakeForm() {
     null,
   );
   const inFlightRef = useRef(false);
+  const generationMessage = generationFailureMessage(failureReason);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -99,6 +101,15 @@ export function RequestIntakeForm() {
       {validationMessage ? (
         <p id="raw-business-request-error" role="alert" className="text-sm text-red-800">
           {validationMessage}
+        </p>
+      ) : null}
+      {generationMessage ? (
+        <p
+          role="alert"
+          aria-labelledby="generation-failure"
+          className="text-sm text-red-800"
+        >
+          <span id="generation-failure">{generationMessage}</span>
         </p>
       ) : null}
       <button

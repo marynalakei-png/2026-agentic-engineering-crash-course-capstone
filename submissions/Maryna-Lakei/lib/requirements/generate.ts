@@ -67,10 +67,55 @@ function failure(reason: GenerationFailureReason): GenerationResult {
   return { ok: false, reason };
 }
 
+function positiveBase10Integer(value: string | undefined): number | null {
+  if (value === undefined || !/^[1-9][0-9]*$/.test(value)) {
+    return null;
+  }
+
+  const parsed = Number(value);
+  if (!Number.isSafeInteger(parsed) || parsed <= 0) {
+    return null;
+  }
+
+  return parsed;
+}
+
+function raceDeadlineMs(): number {
+  if (process.env.REQUIREMENTS_MODEL_MODE !== "fake") {
+    return GENERATION_DEADLINE_MS;
+  }
+
+  return (
+    positiveBase10Integer(process.env.REQUIREMENTS_FAKE_DEADLINE_MS) ??
+    GENERATION_DEADLINE_MS
+  );
+}
+
 function fakeFixtureClient(
   rawRequest: string,
   signal: AbortSignal,
 ): Promise<unknown> {
+  if (rawRequest.includes("[[timeout]]")) {
+    return new Promise(() => {});
+  }
+
+  if (rawRequest.includes("[[provider-error]]")) {
+    return new Promise((_resolve, reject) => {
+      const timer = setTimeout(() => {
+        reject(new Error("provider-error"));
+      }, FIXTURE_DELAY_MS);
+
+      signal.addEventListener(
+        "abort",
+        () => {
+          clearTimeout(timer);
+          reject(new Error("aborted"));
+        },
+        { once: true },
+      );
+    });
+  }
+
   const payload = fixtureForRequest(rawRequest);
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
@@ -152,7 +197,7 @@ export async function generateRequirements(
     timer = setTimeout(() => {
       controller.abort();
       resolve(failure("timeout"));
-    }, GENERATION_DEADLINE_MS);
+    }, raceDeadlineMs());
   });
 
   const clientResult = new Promise<unknown>((resolve, reject) => {

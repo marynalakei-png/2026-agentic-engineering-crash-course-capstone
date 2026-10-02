@@ -10,6 +10,7 @@ import { expect, test, type Page, type Request } from "@playwright/test";
 const RAW_REQUEST_NAME = "Raw business request";
 const GENERATE_NAME = "Generate";
 const EMPTY_MESSAGE = "Enter a business request.";
+const GENERATION_FAILURE_MESSAGE = "Generation failed. You can try Generate again.";
 
 /**
  * A generation attempt is a request whose URL contains "generate", or a POST
@@ -81,6 +82,9 @@ test.describe("request intake", () => {
     const requests = trackGeneration(page);
     await generate.click();
     await expect(page.getByText(EMPTY_MESSAGE, { exact: true })).toBeVisible();
+    await expect(
+      page.getByText(GENERATION_FAILURE_MESSAGE, { exact: true }),
+    ).toHaveCount(0);
     await expect(field).toBeVisible();
     await page.waitForTimeout(1000);
     expect(requests).toEqual([]);
@@ -102,6 +106,9 @@ test.describe("request intake", () => {
     const requests = trackGeneration(page);
     await generate.click();
     await expect(page.getByText(EMPTY_MESSAGE, { exact: true })).toBeVisible();
+    await expect(
+      page.getByText(GENERATION_FAILURE_MESSAGE, { exact: true }),
+    ).toHaveCount(0);
     await expect(field).toHaveValue(" \t ");
     await page.waitForTimeout(1000);
     expect(requests).toEqual([]);

@@ -179,7 +179,9 @@
         "openspec/specs/requirement-generation/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/generation-failure.test.ts"
+      ],
       "recordings": []
     }
   ],
@@ -196,10 +198,6 @@
     {
       "check": "test-trace",
       "msg": "FR-13 has no test annotated \"@trace FR-13\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-8 has no test annotated \"@trace FR-8\""
     },
     {
       "check": "recording-evidence",
