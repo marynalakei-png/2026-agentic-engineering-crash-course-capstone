@@ -93,13 +93,13 @@ test.describe("requirement generation", () => {
       expect(question).toContain("?");
     }
 
-    await expect(page.getByRole("heading", { name: "User Story" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "User Story" })).toHaveCount(1);
     await expect(
       page.getByRole("heading", { name: "Acceptance Criteria" }),
-    ).toHaveCount(0);
+    ).toHaveCount(1);
     await expect(
       page.getByRole("heading", { name: "Clarifying Questions" }),
-    ).toHaveCount(0);
+    ).toHaveCount(1);
     expect(openaiRequests).toEqual([]);
   });
 
@@ -115,6 +115,13 @@ test.describe("requirement generation", () => {
     await page.waitForTimeout(1000);
     expect(requests).toEqual([]);
     await expect(page.getByTestId("user-story")).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "User Story" })).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Acceptance Criteria" }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Clarifying Questions" }),
+    ).toHaveCount(0);
   });
 
   test("whitespace-only Generate shows the inline message, stays enabled, and does not generate", async ({
@@ -130,5 +137,12 @@ test.describe("requirement generation", () => {
     await page.waitForTimeout(1000);
     expect(requests).toEqual([]);
     await expect(page.getByTestId("user-story")).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "User Story" })).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Acceptance Criteria" }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Clarifying Questions" }),
+    ).toHaveCount(0);
   });
 });

@@ -11,6 +11,13 @@
     {
       "slice": "2026-10-02-add-requirement-generation",
       "reviewEvidence": "clean",
+      "trailerCommits": 1,
+      "libDomains": [],
+      "processComplete": true
+    },
+    {
+      "slice": "2026-10-02-add-result-review",
+      "reviewEvidence": "clean",
       "trailerCommits": 0,
       "libDomains": [],
       "processComplete": true
@@ -25,7 +32,7 @@
     },
     {
       "check": "trailer",
-      "msg": "2026-10-02-add-requirement-generation: no commit carries a \"Slice: add-requirement-generation\" trailer"
+      "msg": "2026-10-02-add-result-review: no commit carries a \"Slice: add-result-review\" trailer"
     }
   ]
 }

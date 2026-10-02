@@ -6,12 +6,12 @@
 
 ## Last Updated
 
-- **Date and time:** 2026-10-02 17:00:00 (Europe/Kyiv)
+- **Date and time:** 2026-10-02 18:05:00 (Europe/Kyiv)
 - **Current phase:** Phase 4
 - **Last completed gate:** none
-- **Active change:** none (`add-requirement-generation` archived)
-- **Progress:** A non-empty request returns one User Story, acceptance-criteria bullets, and 3 to 5 questions. Automated tests use a fake model. The owner confirmed a live OpenAI call in the browser on 2026-10-02: one User Story, Acceptance Criteria, and 5 Clarifying Questions. Failure copy is still the next slice.
-- **Next task:** Do not start `add-result-review` until the owner asks. Do not commit a key.
+- **Active change:** none (`add-result-review` archived)
+- **Progress:** A successful Generate shows three labeled sections: User Story, Acceptance Criteria, and Clarifying Questions. A later success replaces the previous result. The owner confirmed both behaviors with the live OpenAI model on 2026-10-02, without reloading the page. Failure copy is still the next slice.
+- **Next task:** Do not start `add-generation-failure` until the owner asks. Do not commit a key.
 - **Claims:**
   - Plan approved — evidence: `docs/mvp-capability-plan.md` status line
   - Red run before generation code — evidence: `npm run test:run` failed with `Cannot find module './parse-generation'` and `Cannot find module './generate'`; Chromium success test failed because `user-story` was absent. Existing validation tests stayed green (13).
@@ -23,6 +23,13 @@
   - Browser smoke with the fake model — evidence: desktop Chromium at http://127.0.0.1:3000 on 2026-10-02, server started with `REQUIREMENTS_MODEL_MODE=fake` and `LLM_API_KEY` unset. Empty and whitespace showed "Enter a business request." and left Generate enabled. A non-empty request disabled Generate, then showed the fixture story, two criteria, and three questions. The field value remained. No login, no copy control, no Regenerate, no section headings, HTTP 200, and no request to api.openai.com (server log: local POST only).
   - Slice archived — evidence: `openspec/changes/archive/2026-10-02-add-requirement-generation/`
   - Live OpenAI check — evidence: `docs/qa/2026-10-02-add-requirement-generation-live-smoke.md`. Owner report on 2026-10-02: a real business request in the browser returned one User Story, Acceptance Criteria, and 5 Clarifying Questions. The key stayed in local `.env.local`.
+  - Result-review unit tests green — evidence: `npm run test:run` on 2026-10-02, 49 passed
+  - Result-review Chromium tests green — evidence: `npm run test:e2e` on 2026-10-02, 11 passed
+  - Result-review review clean — evidence: `openspec/changes/archive/2026-10-02-add-result-review/review-findings.json` (`clean: true`)
+  - Result-review browser smoke — evidence: desktop Chromium at http://127.0.0.1:3000 on 2026-10-02 with `REQUIREMENTS_MODEL_MODE=fake`. Empty and whitespace showed "Enter a business request." and no result headings. The weekly request showed the three headings and the weekly fixture, with the story text selected. The monthly-budget request replaced it: the weekly sentence was gone and the finance-lead story, two criteria, and three questions were shown. Generate was the only action button. Local HTTP 200 only.
+  - Vision pass — evidence: `docs/qa/vision-report.json` (`met: true`) and stills in `docs/qa/vision/`
+  - Slice archived — evidence: `openspec/changes/archive/2026-10-02-add-result-review/`
+  - Live result-review check — evidence: `docs/qa/2026-10-02-add-result-review-live-smoke.md`. Owner report on 2026-10-02: the first live Generate showed User Story, Acceptance Criteria, and Clarifying Questions. Without a reload, a changed source request and a second Generate replaced that result. Only the new three sections remained.
 
 ## Source Of Truth
 
@@ -34,12 +41,13 @@
 
 ## OpenSpec Status
 
-Five baseline specs. Active changes: none. Archived: `2026-10-02-add-request-intake`, `2026-10-02-add-requirement-generation`.
+Five baseline specs. Active changes: none. Archived: `2026-10-02-add-request-intake`, `2026-10-02-add-requirement-generation`, `2026-10-02-add-result-review`.
 
 ## Completed Changes
 
 - `add-request-intake`
 - `add-requirement-generation`
+- `add-result-review`
 
 ## Validation Commands
 
@@ -53,6 +61,6 @@ From `submissions/Maryna-Lakei/`: `npm run lint`, `npm run test:run`, `npm run t
 
 ## Agent Rules / Gotchas
 
-- Scope and the capability plan are approved. Do not start `add-result-review` until the owner asks.
+- Scope and the capability plan are approved. Do not start `add-generation-failure` until the owner asks.
 - Do not renumber FR/NFR/TC/BC ids.
 - Do not archive OpenSpec changes before implementation and smoke test.

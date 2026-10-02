@@ -84,6 +84,13 @@ test.describe("request intake", () => {
     await expect(field).toBeVisible();
     await page.waitForTimeout(1000);
     expect(requests).toEqual([]);
+    await expect(page.getByRole("heading", { name: "User Story" })).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Acceptance Criteria" }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Clarifying Questions" }),
+    ).toHaveCount(0);
   });
 
   test("whitespace-only Generate shows the inline message and does not start generation", async ({
@@ -98,6 +105,13 @@ test.describe("request intake", () => {
     await expect(field).toHaveValue(" \t ");
     await page.waitForTimeout(1000);
     expect(requests).toEqual([]);
+    await expect(page.getByRole("heading", { name: "User Story" })).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Acceptance Criteria" }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Clarifying Questions" }),
+    ).toHaveCount(0);
   });
 
   test("a single word is not rejected as empty", async ({ page }) => {
@@ -127,13 +141,13 @@ test.describe("request intake", () => {
     await expect(field).toHaveValue(
       "Need a weekly sales report for the regional team",
     );
-    await expect(page.getByRole("heading", { name: "User Story" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "User Story" })).toHaveCount(1);
     await expect(
       page.getByRole("heading", { name: "Acceptance Criteria" }),
-    ).toHaveCount(0);
+    ).toHaveCount(1);
     await expect(
       page.getByRole("heading", { name: "Clarifying Questions" }),
-    ).toHaveCount(0);
+    ).toHaveCount(1);
     await expect(page.getByRole("button", { name: "Copy" })).toHaveCount(0);
   });
 });

@@ -42,17 +42,39 @@ const FIXTURE_PAYLOAD = {
   ],
 };
 
+const MONTHLY_BUDGET_FIXTURE_PAYLOAD = {
+  userStory:
+    "As a finance lead, I want a monthly budget summary, so that I can compare planned and actual spend.",
+  acceptanceCriteria: [
+    "The summary lists planned spend by category.",
+    "The summary lists actual spend for the month.",
+  ],
+  clarifyingQuestions: [
+    "Which month does the budget cover?",
+    "Which categories are in scope?",
+    "Who approves a variance?",
+  ],
+};
+
+function fixtureForRequest(rawRequest: string): typeof FIXTURE_PAYLOAD {
+  if (rawRequest.includes("monthly budget")) {
+    return MONTHLY_BUDGET_FIXTURE_PAYLOAD;
+  }
+  return FIXTURE_PAYLOAD;
+}
+
 function failure(reason: GenerationFailureReason): GenerationResult {
   return { ok: false, reason };
 }
 
 function fakeFixtureClient(
-  _rawRequest: string,
+  rawRequest: string,
   signal: AbortSignal,
 ): Promise<unknown> {
+  const payload = fixtureForRequest(rawRequest);
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
-      resolve(FIXTURE_PAYLOAD);
+      resolve(payload);
     }, FIXTURE_DELAY_MS);
 
     signal.addEventListener(

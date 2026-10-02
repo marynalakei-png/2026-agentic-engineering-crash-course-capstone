@@ -1,0 +1,12 @@
+{
+  "met": true,
+  "readable": true,
+  "requirement": "FR-6",
+  "slice": "add-result-review",
+  "reviewedAt": "2026-10-02",
+  "stills": [
+    "docs/qa/vision/result-review-labels.png",
+    "docs/qa/vision/result-review-criteria.png"
+  ],
+  "notes": "A fresh vision judge looked at the settled fake-model result. User Story and Acceptance Criteria are labeled and readable. The story text shows a native gray selection. Acceptance Criteria are two readable bullets. Clarifying Questions is labeled. A Next.js dev badge overlaps the left of that heading in the second still only."
+}

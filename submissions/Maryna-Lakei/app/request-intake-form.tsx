@@ -2,13 +2,12 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import { generateFromRequest } from "@/lib/requirements/actions";
+import {
+  RESULT_SECTION_LABELS,
+  applyGenerationOutcome,
+  type ReviewedResult,
+} from "@/lib/requirements/result-review";
 import { validateRawBusinessRequest } from "@/lib/requirements/validation";
-
-type GeneratedRequirement = {
-  userStory: string;
-  acceptanceCriteria: string[];
-  clarifyingQuestions: string[];
-};
 
 type FailureReason =
   | "empty-input"
@@ -23,7 +22,7 @@ export function RequestIntakeForm() {
     null,
   );
   const [inFlight, setInFlight] = useState(false);
-  const [result, setResult] = useState<GeneratedRequirement | null>(null);
+  const [result, setResult] = useState<ReviewedResult | null>(null);
   const [failureReason, setFailureReason] = useState<FailureReason | null>(
     null,
   );
@@ -49,18 +48,19 @@ export function RequestIntakeForm() {
     try {
       const outcome = await generateFromRequest(rawRequest);
       if (outcome.ok) {
-        setResult({
-          userStory: outcome.userStory,
-          acceptanceCriteria: outcome.acceptanceCriteria,
-          clarifyingQuestions: outcome.clarifyingQuestions,
-        });
+        setResult((stored) => applyGenerationOutcome(stored, outcome));
         setFailureReason(null);
       } else {
-        setResult(null);
+        setResult((stored) => applyGenerationOutcome(stored, outcome));
         setFailureReason(outcome.reason);
       }
     } catch {
-      setResult(null);
+      setResult((stored) =>
+        applyGenerationOutcome(stored, {
+          ok: false,
+          reason: "provider-error",
+        }),
+      );
       setFailureReason("provider-error");
     } finally {
       inFlightRef.current = false;
@@ -110,17 +110,32 @@ export function RequestIntakeForm() {
       </button>
       {result ? (
         <div className="flex flex-col gap-4 text-base text-neutral-950">
-          <p data-testid="user-story">{result.userStory}</p>
-          <ul data-testid="acceptance-criteria" className="list-disc pl-5">
-            {result.acceptanceCriteria.map((criterion, index) => (
-              <li key={`${criterion}-${index}`}>{criterion}</li>
-            ))}
-          </ul>
-          <ul data-testid="clarifying-questions" className="list-disc pl-5">
-            {result.clarifyingQuestions.map((question, index) => (
-              <li key={`${question}-${index}`}>{question}</li>
-            ))}
-          </ul>
+          <section className="flex flex-col gap-2">
+            <h2 className="text-lg font-semibold">
+              {RESULT_SECTION_LABELS.userStory}
+            </h2>
+            <p data-testid="user-story">{result.userStory}</p>
+          </section>
+          <section className="flex flex-col gap-2">
+            <h2 className="text-lg font-semibold">
+              {RESULT_SECTION_LABELS.acceptanceCriteria}
+            </h2>
+            <ul data-testid="acceptance-criteria" className="list-disc pl-5">
+              {result.acceptanceCriteria.map((criterion, index) => (
+                <li key={`${criterion}-${index}`}>{criterion}</li>
+              ))}
+            </ul>
+          </section>
+          <section className="flex flex-col gap-2">
+            <h2 className="text-lg font-semibold">
+              {RESULT_SECTION_LABELS.clarifyingQuestions}
+            </h2>
+            <ul data-testid="clarifying-questions" className="list-disc pl-5">
+              {result.clarifyingQuestions.map((question, index) => (
+                <li key={`${question}-${index}`}>{question}</li>
+              ))}
+            </ul>
+          </section>
         </div>
       ) : null}
     </form>

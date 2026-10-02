@@ -105,7 +105,9 @@
         "openspec/specs/result-review/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/result-review.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -152,7 +154,9 @@
         "openspec/specs/result-review/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/result-review.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -192,14 +196,6 @@
     {
       "check": "test-trace",
       "msg": "FR-13 has no test annotated \"@trace FR-13\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-6 has no test annotated \"@trace FR-6\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-12 has no test annotated \"@trace FR-12\""
     },
     {
       "check": "test-trace",
