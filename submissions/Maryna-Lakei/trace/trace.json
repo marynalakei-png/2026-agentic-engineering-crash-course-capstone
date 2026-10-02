@@ -41,7 +41,9 @@
       ],
       "planned": true,
       "tests": [],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-2",
@@ -50,7 +52,9 @@
       ],
       "planned": true,
       "tests": [],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-13",
@@ -59,7 +63,9 @@
       ],
       "planned": true,
       "tests": [],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-3",
@@ -69,9 +75,12 @@
       ],
       "planned": true,
       "tests": [
-        "lib/requirements/parse-generation.test.ts"
+        "lib/requirements/parse-generation.test.ts",
+        "evals/cases/requirement-shape.eval.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-4",
@@ -81,9 +90,12 @@
       ],
       "planned": true,
       "tests": [
-        "lib/requirements/parse-generation.test.ts"
+        "lib/requirements/parse-generation.test.ts",
+        "evals/cases/requirement-shape.eval.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-5",
@@ -96,7 +108,9 @@
         "lib/requirements/parse-generation.test.ts",
         "evals/cases/clarifying-questions.eval.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-6",
@@ -108,7 +122,9 @@
       "tests": [
         "lib/requirements/result-review.test.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-9",
@@ -118,9 +134,12 @@
       ],
       "planned": true,
       "tests": [
-        "lib/requirements/parse-generation.test.ts"
+        "lib/requirements/parse-generation.test.ts",
+        "evals/cases/requirement-shape.eval.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-10",
@@ -130,9 +149,12 @@
       ],
       "planned": true,
       "tests": [
-        "lib/requirements/parse-generation.test.ts"
+        "lib/requirements/parse-generation.test.ts",
+        "evals/cases/requirement-shape.eval.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-11",
@@ -145,7 +167,9 @@
         "lib/requirements/parse-generation.test.ts",
         "evals/cases/clarifying-questions.eval.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-12",
@@ -158,7 +182,9 @@
         "lib/requirements/result-review.test.ts",
         "tests/cross-slice.integration.test.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-7",
@@ -171,7 +197,9 @@
         "lib/requirements/validation.test.ts",
         "tests/cross-slice.integration.test.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     },
     {
       "id": "FR-8",
@@ -183,9 +211,12 @@
       "planned": true,
       "tests": [
         "lib/requirements/generation-failure.test.ts",
-        "tests/cross-slice.integration.test.ts"
+        "tests/cross-slice.integration.test.ts",
+        "evals/cases/generation-failure-message.eval.ts"
       ],
-      "recordings": []
+      "recordings": [
+        "docs/qa/demo-recordings/manifest.json"
+      ]
     }
   ],
   "failures": [],
@@ -201,58 +232,6 @@
     {
       "check": "test-trace",
       "msg": "FR-13 has no test annotated \"@trace FR-13\""
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-1 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-2 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-13 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-3 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-4 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-5 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-6 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-9 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-10 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-11 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-12 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-7 is not referenced by any recording manifest under docs/qa/"
-    },
-    {
-      "check": "recording-evidence",
-      "msg": "FR-8 is not referenced by any recording manifest under docs/qa/"
     }
   ]
 }

@@ -6,12 +6,12 @@
 
 ## Last Updated
 
-- **Date and time:** 2026-10-02 20:41:00 (Europe/Kyiv)
-- **Current phase:** Phase 5
+- **Date and time:** 2026-10-02 21:23:00 (Europe/Kyiv)
+- **Current phase:** Phase 6
 - **Last completed gate:** none
 - **Active change:** none (all four capability slices archived)
-- **Progress:** Cross-slice hardening for this no-database MVP is committed with the coverage floor. `npm run test:integration` runs one fake-model flow across validation, success, failure, and replacement. Chromium `npm run test:e2e` is 15 passed, including that same journey. The coverage floor is in `quality/coverage-baseline.json` (lines 67.08, statements 66.66, functions 72.97, branches 69.74). `node scripts/gate-status.mjs` prints G5 PASS for the coverage ratchet. `npm run qa:verify` still exits Fail because acceptance artifacts for a11y, eval, and deploy are absent. Those belong to later phases and are not waived. Visual fidelity stays NOT-EARNED. No new product behavior was added.
-- **Next task:** Do not start Phase 6 until the owner asks. Do not commit a key. Do not add a pixel-parity config.
+- **Progress:** The signed QA proof pack, recordings, accessibility report, fake-model eval, supplemental live OpenAI eval, and clarifying-questions rubric correction are committed with this change. The first live gap-questions score of 35 is kept, and the re-grade of the same saved output is 100. Deploy evidence is still missing. Visual fidelity stays NOT-EARNED. No deploy and no push.
+- **Next task:** Do not start Phase 7, do not deploy, and do not push until asked. NFR-2 deploy evidence is still missing. Do not add a pixel-parity config. Do not commit a key.
 - **Claims:**
   - Plan approved — evidence: `docs/mvp-capability-plan.md` status line
   - Red run before generation code — evidence: `npm run test:run` failed with `Cannot find module './parse-generation'` and `Cannot find module './generate'`; Chromium success test failed because `user-story` was absent. Existing validation tests stayed green (13).
@@ -43,7 +43,13 @@
   - Cross-slice Chromium flow — evidence: `e2e/cross-slice.spec.ts`. `npm run test:e2e` on 2026-10-02 20:28 Europe/Kyiv, 15 passed.
   - Coverage baseline — evidence: `quality/coverage-baseline.json`. `npm run test:coverage` then `node scripts/check-coverage-ratchet.mjs --update`, then a compare run printed Result: PASS. Lines 67.08, statements 66.66, functions 72.97, branches 69.74. Uncovered on purpose for this run: `lib/requirements/actions.ts` and `lib/requirements/openai-client.ts`, which the unit suite does not execute because it must not call OpenAI.
   - Gate status — evidence: `node scripts/gate-status.mjs` on 2026-10-02. G5 PASS (coverage). Overall Result: FAIL because G4, G6, and G7 include acceptance artifacts, recordings, evals, visual fidelity, and factory integrity.
-  - qa:verify — evidence: `docs/qa/automated-verification-latest.md`. Overall result: Fail. The run stopped at acceptance-artifacts: missing a11y reports (FR-1, FR-2, FR-7), missing `evals/results/latest.json` (FR-3, FR-4, FR-5, FR-9, FR-10, FR-11), and missing deploy verification (NFR-2). Recordings were NOT-EARNED at Scope 0 before that stop.
+  - qa:verify on 2026-10-02 20:53 Europe/Kyiv — evidence: `docs/qa/automated-verification-latest.md`. Overall result: Fail. Traceability, trajectory, and recordings passed. Acceptance artifacts failed only on missing NFR-2 deploy verification, and the battery stopped there.
+  - Phase 6 recordings — evidence: `docs/qa/demo-recordings/manifest.json`. `node scripts/check-recordings.mjs` Result: PASS, 5 clips, asserted, vision met and readable. Desktop only.
+  - Phase 6 accessibility — evidence: `docs/qa/a11y-report.json`. axe on `/`, light and dark color schemes, 0 serious or critical violations. No dark theme was added.
+  - Phase 6 eval — evidence: `docs/qa/eval-report.md` and `evals/results/latest.json`. Four fake-model cases, each scored 100 by a fresh judge. No OpenAI call. `quality/eval-baseline.json` matches. `node scripts/check-eval-ratchet.mjs` Result: PASS.
+  - QA proof pack — evidence: `docs/qa/README.md`, `requirements-traceability-matrix.md`, `manual-test-plan.md`, `demo-script.md`, `risk-register.md`, `mvp-acceptance-report.md`. Owner signature: accepted as written on 2026-10-02 (Europe/Kyiv).
+  - Supplemental live OpenAI eval — evidence: `docs/qa/2026-10-02-live-openai-eval.md` and `evals/results/live-openai.json`. Model `gpt-4.1-mini`. Key not recorded. Story-shape 100. Acceptance-criteria 75. Failure sentence not sent to OpenAI.
+  - Clarifying-questions rubric correction — evidence: `docs/qa/2026-10-02-clarifying-questions-rubric-correction.md`. Fake re-grade 100 (`82dbea44-e8c8-4ee8-a275-66b902023b54`). Saved live re-grade 100 (`73dee2e3-fc03-49bd-aad9-2a36951ee267`). No new OpenAI call. `node scripts/check-eval-ratchet.mjs` Result: PASS. Production prompt unchanged.
 
 ## Source Of Truth
 
@@ -76,7 +82,7 @@ From `submissions/Maryna-Lakei/`: `npm run lint`, `npm run test:run`, `npm run t
 
 ## Agent Rules / Gotchas
 
-- Scope and the capability plan are approved. All four slices are archived. Phase 5 coverage and cross-slice tests are committed. Do not start Phase 6 until the owner asks.
+- Scope and the capability plan are approved. All four slices are archived. Phase 6 evidence is committed. Do not start Phase 7 until the owner asks. Deploy evidence is still missing. Visual fidelity stays NOT-EARNED.
 - This MVP has no database and no accounts (TC-3). Do not add a seed helper, login tests, or a pixel-parity config to force a later gate green.
 - Do not renumber FR/NFR/TC/BC ids.
 - Do not archive OpenSpec changes before implementation and smoke test.
