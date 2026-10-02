@@ -5,12 +5,13 @@ archived slice took: review evidence, `Slice:` trailers, and module scope.
 It does NOT verify test-first ordering or test integrity (not derivable from
 one-commit-per-slice history) — those are graded by the trajectory-eval workflow.
 
-Scope: 1 archived slice(s).
+Scope: 2 archived slice(s).
 Result: PASS, 2 warning(s)
 
 | Slice | Review evidence | Trailer commits | design+tasks | lib domains touched |
 |---|---|---|---|---|
-| 2026-10-02-add-request-intake | **missing** | **0** | yes | - |
+| 2026-10-02-add-request-intake | **missing** | 1 | yes | - |
+| 2026-10-02-add-requirement-generation | clean | **0** | yes | - |
 
 ## Cross-slice module overlap
 
@@ -23,4 +24,4 @@ None.
 ## Warnings
 
 - **review-evidence**: 2026-10-02-add-request-intake: review-findings.json is missing (review must have run clean before archive)
-- **trailer**: 2026-10-02-add-request-intake: no commit carries a "Slice: add-request-intake" trailer
+- **trailer**: 2026-10-02-add-requirement-generation: no commit carries a "Slice: add-requirement-generation" trailer

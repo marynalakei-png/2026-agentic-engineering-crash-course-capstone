@@ -4,6 +4,13 @@
     {
       "slice": "2026-10-02-add-request-intake",
       "reviewEvidence": "missing",
+      "trailerCommits": 1,
+      "libDomains": [],
+      "processComplete": true
+    },
+    {
+      "slice": "2026-10-02-add-requirement-generation",
+      "reviewEvidence": "clean",
       "trailerCommits": 0,
       "libDomains": [],
       "processComplete": true
@@ -18,7 +25,7 @@
     },
     {
       "check": "trailer",
-      "msg": "2026-10-02-add-request-intake: no commit carries a \"Slice: add-request-intake\" trailer"
+      "msg": "2026-10-02-add-requirement-generation: no commit carries a \"Slice: add-requirement-generation\" trailer"
     }
   ]
 }

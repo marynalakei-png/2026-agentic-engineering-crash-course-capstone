@@ -1,18 +1,18 @@
 "use server";
 
-const IN_FLIGHT_STUB_DELAY_MS = 1000;
+import { generateRequirements, type GenerationResult } from "./generate";
 
 /**
- * In-flight stub for an already-validated raw business request.
- * Waits about one second and returns no generated text.
- * Does not call an LLM and does not read an API key.
+ * One Generate for an already-submitted raw request.
+ * Returns the three shapes or a structured failure. Does not throw those
+ * outcomes, and the return value has no API key.
  */
-export async function holdValidatedRequest(rawRequest: string): Promise<void> {
-  if (rawRequest.trim() === "") {
-    return;
+export async function generateFromRequest(
+  rawRequest: string,
+): Promise<GenerationResult> {
+  try {
+    return await generateRequirements(rawRequest);
+  } catch {
+    return { ok: false, reason: "provider-error" };
   }
-
-  await new Promise<void>((resolve) => {
-    setTimeout(resolve, IN_FLIGHT_STUB_DELAY_MS);
-  });
 }

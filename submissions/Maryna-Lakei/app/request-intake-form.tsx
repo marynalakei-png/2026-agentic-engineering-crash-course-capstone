@@ -1,8 +1,21 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import { holdValidatedRequest } from "@/lib/requirements/actions";
+import { generateFromRequest } from "@/lib/requirements/actions";
 import { validateRawBusinessRequest } from "@/lib/requirements/validation";
+
+type GeneratedRequirement = {
+  userStory: string;
+  acceptanceCriteria: string[];
+  clarifyingQuestions: string[];
+};
+
+type FailureReason =
+  | "empty-input"
+  | "missing-key"
+  | "provider-error"
+  | "timeout"
+  | "invalid-payload";
 
 export function RequestIntakeForm() {
   const [rawRequest, setRawRequest] = useState("");
@@ -10,6 +23,10 @@ export function RequestIntakeForm() {
     null,
   );
   const [inFlight, setInFlight] = useState(false);
+  const [result, setResult] = useState<GeneratedRequirement | null>(null);
+  const [failureReason, setFailureReason] = useState<FailureReason | null>(
+    null,
+  );
   const inFlightRef = useRef(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -21,14 +38,30 @@ export function RequestIntakeForm() {
     const validation = validateRawBusinessRequest(rawRequest);
     if (!validation.ok) {
       setValidationMessage(validation.message);
+      setFailureReason(null);
       return;
     }
 
     setValidationMessage(null);
+    setFailureReason(null);
     inFlightRef.current = true;
     setInFlight(true);
     try {
-      await holdValidatedRequest(rawRequest);
+      const outcome = await generateFromRequest(rawRequest);
+      if (outcome.ok) {
+        setResult({
+          userStory: outcome.userStory,
+          acceptanceCriteria: outcome.acceptanceCriteria,
+          clarifyingQuestions: outcome.clarifyingQuestions,
+        });
+        setFailureReason(null);
+      } else {
+        setResult(null);
+        setFailureReason(outcome.reason);
+      }
+    } catch {
+      setResult(null);
+      setFailureReason("provider-error");
     } finally {
       inFlightRef.current = false;
       setInFlight(false);
@@ -36,7 +69,11 @@ export function RequestIntakeForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-4">
+    <form
+      onSubmit={onSubmit}
+      className="flex flex-col gap-4"
+      data-generation-reason={failureReason ?? undefined}
+    >
       <div className="flex flex-col gap-2">
         <label
           htmlFor="raw-business-request"
@@ -71,6 +108,21 @@ export function RequestIntakeForm() {
       >
         Generate
       </button>
+      {result ? (
+        <div className="flex flex-col gap-4 text-base text-neutral-950">
+          <p data-testid="user-story">{result.userStory}</p>
+          <ul data-testid="acceptance-criteria" className="list-disc pl-5">
+            {result.acceptanceCriteria.map((criterion, index) => (
+              <li key={`${criterion}-${index}`}>{criterion}</li>
+            ))}
+          </ul>
+          <ul data-testid="clarifying-questions" className="list-disc pl-5">
+            {result.clarifyingQuestions.map((question, index) => (
+              <li key={`${question}-${index}`}>{question}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </form>
   );
 }

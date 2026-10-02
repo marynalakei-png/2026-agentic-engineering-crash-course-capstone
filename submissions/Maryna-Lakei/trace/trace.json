@@ -68,7 +68,9 @@
         "openspec/specs/requirement-generation/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/parse-generation.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -78,7 +80,9 @@
         "openspec/specs/requirement-generation/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/parse-generation.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -88,7 +92,10 @@
         "openspec/specs/requirement-generation/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/parse-generation.test.ts",
+        "evals/cases/clarifying-questions.eval.ts"
+      ],
       "recordings": []
     },
     {
@@ -108,7 +115,9 @@
         "openspec/specs/requirement-generation/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/parse-generation.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -118,7 +127,9 @@
         "openspec/specs/requirement-generation/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/parse-generation.test.ts"
+      ],
       "recordings": []
     },
     {
@@ -128,7 +139,10 @@
         "openspec/specs/requirement-generation/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/parse-generation.test.ts",
+        "evals/cases/clarifying-questions.eval.ts"
+      ],
       "recordings": []
     },
     {
@@ -181,31 +195,7 @@
     },
     {
       "check": "test-trace",
-      "msg": "FR-3 has no test annotated \"@trace FR-3\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-4 has no test annotated \"@trace FR-4\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-5 has no test annotated \"@trace FR-5\""
-    },
-    {
-      "check": "test-trace",
       "msg": "FR-6 has no test annotated \"@trace FR-6\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-9 has no test annotated \"@trace FR-9\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-10 has no test annotated \"@trace FR-10\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-11 has no test annotated \"@trace FR-11\""
     },
     {
       "check": "test-trace",
