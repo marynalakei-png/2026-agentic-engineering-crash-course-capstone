@@ -1,0 +1,271 @@
+{
+  "generatedBy": "scripts/check-traceability.mjs",
+  "requirements": {
+    "FR-1": "MVP",
+    "FR-2": "MVP",
+    "FR-13": "MVP",
+    "FR-3": "MVP",
+    "FR-4": "MVP",
+    "FR-5": "MVP",
+    "FR-6": "MVP",
+    "FR-9": "MVP",
+    "FR-10": "MVP",
+    "FR-11": "MVP",
+    "FR-12": "MVP",
+    "FR-7": "MVP",
+    "FR-8": "MVP",
+    "NFR-1": "MVP",
+    "NFR-2": "MVP",
+    "NFR-3": "MVP",
+    "NFR-4": "MVP",
+    "NFR-5": "MVP",
+    "TC-1": "MVP",
+    "TC-2": "MVP",
+    "TC-3": "MVP",
+    "TC-4": "MVP",
+    "TC-5": "MVP",
+    "TC-6": "MVP",
+    "TC-7": "MVP",
+    "TC-8": "MVP",
+    "BC-1": "MVP",
+    "BC-2": "Future",
+    "BC-3": "MVP",
+    "BC-4": "MVP",
+    "BC-5": "MVP"
+  },
+  "links": [
+    {
+      "id": "FR-1",
+      "specs": [
+        "openspec/specs/request-intake/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-2",
+      "specs": [
+        "openspec/specs/request-intake/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-13",
+      "specs": [
+        "openspec/specs/request-intake/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-3",
+      "specs": [
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/requirement-generation/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-4",
+      "specs": [
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/requirement-generation/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-5",
+      "specs": [
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/requirement-generation/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-6",
+      "specs": [
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/result-review/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-9",
+      "specs": [
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/requirement-generation/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-10",
+      "specs": [
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/requirement-generation/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-11",
+      "specs": [
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/requirement-generation/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-12",
+      "specs": [
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/result-review/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    },
+    {
+      "id": "FR-7",
+      "specs": [
+        "openspec/specs/generation-failure/spec.md",
+        "openspec/specs/request-intake/spec.md"
+      ],
+      "planned": true,
+      "tests": [
+        "lib/requirements/validation.test.ts"
+      ],
+      "recordings": []
+    },
+    {
+      "id": "FR-8",
+      "specs": [
+        "openspec/specs/generation-failure/spec.md",
+        "openspec/specs/request-intake/spec.md",
+        "openspec/specs/requirement-generation/spec.md"
+      ],
+      "planned": true,
+      "tests": [],
+      "recordings": []
+    }
+  ],
+  "failures": [],
+  "warnings": [
+    {
+      "check": "test-trace",
+      "msg": "FR-1 has no test annotated \"@trace FR-1\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-2 has no test annotated \"@trace FR-2\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-13 has no test annotated \"@trace FR-13\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-3 has no test annotated \"@trace FR-3\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-4 has no test annotated \"@trace FR-4\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-5 has no test annotated \"@trace FR-5\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-6 has no test annotated \"@trace FR-6\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-9 has no test annotated \"@trace FR-9\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-10 has no test annotated \"@trace FR-10\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-11 has no test annotated \"@trace FR-11\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-12 has no test annotated \"@trace FR-12\""
+    },
+    {
+      "check": "test-trace",
+      "msg": "FR-8 has no test annotated \"@trace FR-8\""
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-1 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-2 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-13 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-3 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-4 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-5 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-6 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-9 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-10 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-11 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-12 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-7 is not referenced by any recording manifest under docs/qa/"
+    },
+    {
+      "check": "recording-evidence",
+      "msg": "FR-8 is not referenced by any recording manifest under docs/qa/"
+    }
+  ]
+}

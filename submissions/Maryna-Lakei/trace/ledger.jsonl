@@ -1,0 +1,1 @@
+{"ts":"2026-09-30T15:55:59.991Z","event":"hook-run","check":"pre-commit","exitCode":0,"failures":null,"warnings":null,"warningsByClass":{},"scope_n":null,"phase":"1","gitHead":"cbee9be57cf6afbe3ddd919f4488a0d15f75245d","dirty":true,"durationMs":null,"meta":{}}
