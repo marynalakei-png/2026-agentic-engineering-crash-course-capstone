@@ -155,7 +155,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/requirements/result-review.test.ts"
+        "lib/requirements/result-review.test.ts",
+        "tests/cross-slice.integration.test.ts"
       ],
       "recordings": []
     },
@@ -167,7 +168,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/requirements/validation.test.ts"
+        "lib/requirements/validation.test.ts",
+        "tests/cross-slice.integration.test.ts"
       ],
       "recordings": []
     },
@@ -180,7 +182,8 @@
       ],
       "planned": true,
       "tests": [
-        "lib/requirements/generation-failure.test.ts"
+        "lib/requirements/generation-failure.test.ts",
+        "tests/cross-slice.integration.test.ts"
       ],
       "recordings": []
     }

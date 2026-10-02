@@ -24,7 +24,7 @@
     "lint": "eslint .",
     "build": "next build",
     "test:run": "vitest run",
-    "test:integration": "node -e \"console.error('test:integration: this MVP has no database. Browser smoke is npm run test:e2e.'); process.exit(1)\"",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
     "test:e2e": "playwright test --project=chromium",
     "test:coverage": "vitest run --coverage",
     "qa:verify": "node scripts/qa-verify.mjs",

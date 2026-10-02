@@ -1,20 +1,20 @@
 {
   "generatedBy": "scripts/check-acceptance-methods.mjs",
-  "mode": "existence",
-  "productCode": false,
+  "mode": "artifact",
+  "productCode": true,
   "contracts": {
     "FR-1": [
       {
         "method": "a11y",
         "mechanism": "npm:check:a11y",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       },
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "FR-2": [
@@ -22,127 +22,127 @@
         "method": "a11y",
         "mechanism": "npm:check:a11y",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       },
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "FR-13": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "FR-3": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       },
       {
         "method": "eval",
         "mechanism": "file:scripts/check-eval-ratchet.mjs",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       }
     ],
     "FR-4": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       },
       {
         "method": "eval",
         "mechanism": "file:scripts/check-eval-ratchet.mjs",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       }
     ],
     "FR-5": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       },
       {
         "method": "eval",
         "mechanism": "file:scripts/check-eval-ratchet.mjs",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       }
     ],
     "FR-6": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       },
       {
         "method": "vision-verify",
         "mechanism": "npm:check:vision",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "docs/qa/vision-report.json",
+        "status": "artifact-ok"
       }
     ],
     "FR-9": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       },
       {
         "method": "eval",
         "mechanism": "file:scripts/check-eval-ratchet.mjs",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       }
     ],
     "FR-10": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       },
       {
         "method": "eval",
         "mechanism": "file:scripts/check-eval-ratchet.mjs",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       }
     ],
     "FR-11": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       },
       {
         "method": "eval",
         "mechanism": "file:scripts/check-eval-ratchet.mjs",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       }
     ],
     "FR-12": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "FR-7": [
@@ -150,35 +150,35 @@
         "method": "a11y",
         "mechanism": "npm:check:a11y",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       },
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       },
       {
         "method": "local-verifiable",
         "mechanism": "npm:test:run",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "tests/cross-slice.integration.test.ts",
+        "status": "artifact-ok"
       }
     ],
     "FR-8": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "NFR-1": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "NFR-2": [
@@ -186,37 +186,37 @@
         "method": "deploy-gated",
         "mechanism": "npm:check:deploy",
         "artifact": null,
-        "status": "mechanism-ok"
+        "status": "missing-artifact"
       },
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "NFR-3": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "NFR-4": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ],
     "NFR-5": [
       {
         "method": "e2e",
         "mechanism": "npm:test:e2e",
-        "artifact": null,
-        "status": "mechanism-ok"
+        "artifact": "test-results/.last-run.json",
+        "status": "artifact-ok"
       }
     ]
   }

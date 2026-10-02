@@ -6,12 +6,12 @@
 
 ## Last Updated
 
-- **Date and time:** 2026-10-02 19:52:00 (Europe/Kyiv)
-- **Current phase:** Phase 4
+- **Date and time:** 2026-10-02 20:41:00 (Europe/Kyiv)
+- **Current phase:** Phase 5
 - **Last completed gate:** none
 - **Active change:** none (all four capability slices archived)
-- **Progress:** All four approved slices are complete. A generation failure shows "Generation failed. You can try Generate again." Empty input still shows only "Enter a business request." The owner confirmed both failure cases, the empty-input message, and a later successful replacement on 2026-10-02 with the factory fake model.
-- **Next task:** Phase 5, cross-cutting hardening (gate G5), has not started. Do not start it, a QA pack, a deploy, or another slice until the owner asks. Do not commit a key.
+- **Progress:** Cross-slice hardening for this no-database MVP is committed with the coverage floor. `npm run test:integration` runs one fake-model flow across validation, success, failure, and replacement. Chromium `npm run test:e2e` is 15 passed, including that same journey. The coverage floor is in `quality/coverage-baseline.json` (lines 67.08, statements 66.66, functions 72.97, branches 69.74). `node scripts/gate-status.mjs` prints G5 PASS for the coverage ratchet. `npm run qa:verify` still exits Fail because acceptance artifacts for a11y, eval, and deploy are absent. Those belong to later phases and are not waived. Visual fidelity stays NOT-EARNED. No new product behavior was added.
+- **Next task:** Do not start Phase 6 until the owner asks. Do not commit a key. Do not add a pixel-parity config.
 - **Claims:**
   - Plan approved — evidence: `docs/mvp-capability-plan.md` status line
   - Red run before generation code — evidence: `npm run test:run` failed with `Cannot find module './parse-generation'` and `Cannot find module './generate'`; Chromium success test failed because `user-story` was absent. Existing validation tests stayed green (13).
@@ -39,6 +39,11 @@
   - Slice archived — evidence: `openspec/changes/archive/2026-10-02-add-generation-failure/`
   - Generation-failure browser smoke — evidence: desktop Chromium against http://127.0.0.1:3000 on 2026-10-02 18:39 Europe/Kyiv. The server was started with `REQUIREMENTS_MODEL_MODE=fake`, `REQUIREMENTS_FAKE_DEADLINE_MS=1500`, and `LLM_API_KEY` empty. Empty and whitespace showed only "Enter a business request." and left Generate enabled. The weekly request showed the three headings and the weekly fixture, with no failure sentence. `[[provider-error]]` showed the failure sentence in an alert after 1321 ms, left the field unchanged, re-enabled Generate, and kept the weekly story. `[[timeout]]` did the same after 1827 ms. The monthly-budget request then replaced the weekly story with the finance-lead fixture and cleared the failure sentence. No Internal Server Error. Request hosts were only 127.0.0.1:3000.
   - Owner generation-failure check — evidence: `docs/qa/2026-10-02-add-generation-failure-owner-smoke.md`. Owner report on 2026-10-02, factory fake model: the provider-error and timeout scenarios each showed "Generation failed. You can try Generate again."; empty input showed only "Enter a business request."; a later normal request showed a new User Story, Acceptance Criteria, and Clarifying Questions and replaced the previous result. No API key was used.
+  - Cross-slice integration — evidence: `tests/cross-slice.integration.test.ts`. `npm run test:integration` on 2026-10-02, 1 passed. Fake model only. No database and no API key.
+  - Cross-slice Chromium flow — evidence: `e2e/cross-slice.spec.ts`. `npm run test:e2e` on 2026-10-02 20:28 Europe/Kyiv, 15 passed.
+  - Coverage baseline — evidence: `quality/coverage-baseline.json`. `npm run test:coverage` then `node scripts/check-coverage-ratchet.mjs --update`, then a compare run printed Result: PASS. Lines 67.08, statements 66.66, functions 72.97, branches 69.74. Uncovered on purpose for this run: `lib/requirements/actions.ts` and `lib/requirements/openai-client.ts`, which the unit suite does not execute because it must not call OpenAI.
+  - Gate status — evidence: `node scripts/gate-status.mjs` on 2026-10-02. G5 PASS (coverage). Overall Result: FAIL because G4, G6, and G7 include acceptance artifacts, recordings, evals, visual fidelity, and factory integrity.
+  - qa:verify — evidence: `docs/qa/automated-verification-latest.md`. Overall result: Fail. The run stopped at acceptance-artifacts: missing a11y reports (FR-1, FR-2, FR-7), missing `evals/results/latest.json` (FR-3, FR-4, FR-5, FR-9, FR-10, FR-11), and missing deploy verification (NFR-2). Recordings were NOT-EARNED at Scope 0 before that stop.
 
 ## Source Of Truth
 
@@ -71,6 +76,7 @@ From `submissions/Maryna-Lakei/`: `npm run lint`, `npm run test:run`, `npm run t
 
 ## Agent Rules / Gotchas
 
-- Scope and the capability plan are approved. All four slices are archived. Do not start Phase 5 until the owner asks.
+- Scope and the capability plan are approved. All four slices are archived. Phase 5 coverage and cross-slice tests are committed. Do not start Phase 6 until the owner asks.
+- This MVP has no database and no accounts (TC-3). Do not add a seed helper, login tests, or a pixel-parity config to force a later gate green.
 - Do not renumber FR/NFR/TC/BC ids.
 - Do not archive OpenSpec changes before implementation and smoke test.

@@ -18,9 +18,9 @@ Result: PASS, 16 warning(s)
 | FR-9 | yes | yes | 1 | - |
 | FR-10 | yes | yes | 1 | - |
 | FR-11 | yes | yes | 2 | - |
-| FR-12 | yes | yes | 1 | - |
-| FR-7 | yes | yes | 1 | - |
-| FR-8 | yes | yes | 1 | - |
+| FR-12 | yes | yes | 2 | - |
+| FR-7 | yes | yes | 2 | - |
+| FR-8 | yes | yes | 2 | - |
 
 ## Failures
 

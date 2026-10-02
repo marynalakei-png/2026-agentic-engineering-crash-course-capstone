@@ -4,7 +4,7 @@
     {
       "slice": "2026-10-02-add-generation-failure",
       "reviewEvidence": "clean",
-      "trailerCommits": 0,
+      "trailerCommits": 1,
       "libDomains": [],
       "processComplete": true
     },
@@ -33,10 +33,6 @@
   "overlaps": [],
   "failures": [],
   "warnings": [
-    {
-      "check": "trailer",
-      "msg": "2026-10-02-add-generation-failure: no commit carries a \"Slice: add-generation-failure\" trailer"
-    },
     {
       "check": "review-evidence",
       "msg": "2026-10-02-add-request-intake: review-findings.json is missing (review must have run clean before archive)"
