@@ -232,6 +232,10 @@
     {
       "check": "test-trace",
       "msg": "FR-13 has no test annotated \"@trace FR-13\""
+    },
+    {
+      "check": "active-changes",
+      "msg": "active change \"improve-PD-2\" is not archived"
     }
   ]
 }
