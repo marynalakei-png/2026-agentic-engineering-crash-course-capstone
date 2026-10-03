@@ -60,7 +60,7 @@
         "sketch": "Do not change the acceptance check, do not waive NFR-2, and do not commit a hand-written deploy report. Deploy for real and commit the report that deploy writes. scripts/check-deploy.mjs already requires status passed|pass|ok|green and a non-empty url.",
         "proposalDir": "openspec/changes/improve-PD-1/"
       },
-      "status": "proposed",
+      "status": "resolved",
       "correctionIds": []
     },
     {
