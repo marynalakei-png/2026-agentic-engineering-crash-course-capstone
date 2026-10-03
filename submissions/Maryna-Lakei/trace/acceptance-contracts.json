@@ -185,8 +185,8 @@
       {
         "method": "deploy-gated",
         "mechanism": "npm:check:deploy",
-        "artifact": null,
-        "status": "missing-artifact"
+        "artifact": "docs/qa/deploy-verification.json",
+        "status": "artifact-ok"
       },
       {
         "method": "e2e",

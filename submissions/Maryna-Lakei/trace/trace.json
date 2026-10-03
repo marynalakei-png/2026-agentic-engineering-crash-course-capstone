@@ -40,7 +40,9 @@
         "openspec/specs/request-intake/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/request-intake-controls.test.ts"
+      ],
       "recordings": [
         "docs/qa/demo-recordings/manifest.json"
       ]
@@ -51,7 +53,9 @@
         "openspec/specs/request-intake/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/request-intake-controls.test.ts"
+      ],
       "recordings": [
         "docs/qa/demo-recordings/manifest.json"
       ]
@@ -62,7 +66,9 @@
         "openspec/specs/request-intake/spec.md"
       ],
       "planned": true,
-      "tests": [],
+      "tests": [
+        "lib/requirements/request-intake-controls.test.ts"
+      ],
       "recordings": [
         "docs/qa/demo-recordings/manifest.json"
       ]
@@ -220,26 +226,5 @@
     }
   ],
   "failures": [],
-  "warnings": [
-    {
-      "check": "test-trace",
-      "msg": "FR-1 has no test annotated \"@trace FR-1\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-2 has no test annotated \"@trace FR-2\""
-    },
-    {
-      "check": "test-trace",
-      "msg": "FR-13 has no test annotated \"@trace FR-13\""
-    },
-    {
-      "check": "active-changes",
-      "msg": "active change \"improve-PD-1\" is not archived"
-    },
-    {
-      "check": "active-changes",
-      "msg": "active change \"improve-PD-2\" is not archived"
-    }
-  ]
+  "warnings": []
 }

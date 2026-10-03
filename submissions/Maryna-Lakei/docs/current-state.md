@@ -6,13 +6,22 @@
 
 ## Last Updated
 
-- **Date and time:** 2026-10-02 21:23:00 (Europe/Kyiv)
-- **Current phase:** Phase 6
+- **Date and time:** 2026-10-03 13:34:00 (Europe/Kyiv)
+- **Current phase:** Phase 7, release documentation in the working tree, not yet the final release commit.
 - **Last completed gate:** none
-- **Active change:** none (all four capability slices archived)
-- **Progress:** The signed QA proof pack, recordings, accessibility report, fake-model eval, supplemental live OpenAI eval, and clarifying-questions rubric correction are committed with this change. The first live gap-questions score of 35 is kept, and the re-grade of the same saved output is 100. Deploy evidence is still missing. Visual fidelity stays NOT-EARNED. No deploy and no push.
-- **Next task:** Do not start Phase 7, do not deploy, and do not push until asked. NFR-2 deploy evidence is still missing. Do not add a pixel-parity config. Do not commit a key.
+- **Active change:** none. The four capability slices stay archived. Closed improvement proposals are in `docs/qa/process-improvements/`, not in the slice archive.
+- **Progress:** Production is deployed. Evidence: `docs/qa/deploy-verification.json` and commit `47800573915f20c69a4df89ae4218d606d919f14` (`Refs: PD-1`). The trajectory evaluation is accepted as a retrospective reading of the existing git history. It is not a product defect, and the commits were not rewritten. Visual fidelity stays NOT-EARNED. `quality/visual-parity.config.json` is absent.
+- **Next task:** Push is not done. Do not rewrite, squash, split, or amend commits to raise trajectory scores. Do not add `quality/visual-parity.config.json`. Do not amend `10269e4`. Do not apply PD-3, PD-4, or PD-5. Do not apply the `npm audit fix --force` downgrade for the `braces` advisory (R-9).
 - **Claims:**
+  - Claims dated 2026-10-02 that say NFR-2 deploy evidence is missing, or that PD-2 still needs an owner decision, describe that day's pack. The 2026-10-03 claims below are the later evidence.
+  - Production deploy — evidence: `docs/qa/deploy-verification.json` (`status` passed, `verifiedAt` 2026-10-03T13:15:56+03:00). URL https://ai-requirements-assistant-umber.vercel.app. Vercel project `marynalakei-png/ai-requirements-assistant`. Deployment `dpl_rGZG9Z5czhWLhWrPdAyv3fNLK24u`. HTTP 200, `loginWall` false. Smoke request produced one user story, 5 acceptance criteria, and 5 clarifying questions. Input preserved. `failureMessageShown` false. Browser hosts: only that production host. `secretMaterialInPage` false. Commit `47800573915f20c69a4df89ae4218d606d919f14` with trailer `Refs: PD-1`. `node scripts/check-deploy.mjs` on 2026-10-03 exited 0 and printed that URL.
+  - Production env names — evidence: `productionEnv` in `docs/qa/deploy-verification.json`. `LLM_API_KEY` is `set-as-secret-value-not-recorded` (Vercel Production secret; the value is not copied). `LLM_MODEL` is `gpt-4.1-mini`. `REQUIREMENTS_MODEL_MODE` is `unset`.
+  - PD-2 applied — evidence: commit `10269e4839fe4b42c05e88ef340b702ad332d012` (`Refs: PD-2`). Record `docs/qa/process-improvements/2026-10-03-improve-PD-2/`. `docs/qa/process-defects.json` status `resolved`. `node scripts/check-factory-integrity.mjs` on 2026-10-03 printed `Result: PASS, 1 warning(s)` about `core.hooksPath`. Git config was not changed.
+  - PD-3, PD-4, PD-5 not adopted — evidence: status `not adopted` on each proposal under `docs/qa/process-improvements/2026-10-03-improve-PD-3/`, `docs/qa/process-improvements/2026-10-03-improve-PD-4/`, and `docs/qa/process-improvements/2026-10-03-improve-PD-5/`, and the same status in `docs/qa/process-defects.json`. `scripts/ledger-report.mjs` and `scripts/qa-verify.mjs` were not edited for them.
+  - Trajectory evaluation accepted — evidence: `docs/qa/trajectory-eval-report.md` and `evals/results/trajectory-latest.json`, generated 2026-10-03T10:30:07Z. Owner acceptance 2026-10-03: honest assessment of the existing git history. All four slices fail process-order because tests and implementation were committed together. `add-request-intake` also fails in-scope because the initial factory scaffold was included in `5733b56`. These are retrospective process findings, not product defects. No commit was rewritten, squashed, split, or amended, and product behavior was not changed to raise the scores.
+  - Visual fidelity NOT-EARNED — evidence: `node scripts/check-visual-fidelity.mjs` on 2026-10-03 printed `Result: NOT-EARNED` because `quality/visual-parity.config.json` is absent. `factory-lock.json` adaptation `no visual-parity config: no pixel-fidelity requirement`.
+  - Release documentation — evidence: `docs/technical/`, `docs/estimation.md`, `docs/delivery-report.md`. Effort is commit timestamps only (`docs/estimation.md`). No hour total.
+  - PD-6 resolved — evidence: `docs/qa/process-defects.json` status `resolved`. The fix is this release commit of the governed tree. No check script changed. `npm audit` `braces` advisory is R-9 in `docs/qa/risk-register.md`. The dependency downgrade was not applied.
   - Plan approved — evidence: `docs/mvp-capability-plan.md` status line
   - Red run before generation code — evidence: `npm run test:run` failed with `Cannot find module './parse-generation'` and `Cannot find module './generate'`; Chromium success test failed because `user-story` was absent. Existing validation tests stayed green (13).
   - Unit tests green — evidence: `npm run test:run` on 2026-10-02 16:23 Europe/Kyiv, 36 passed
@@ -58,10 +67,11 @@
 3. `docs/adr/` — ADR-0001 stack, ADR-0002 context budget, ADR-0003 OpenAI `gpt-4.1-mini`.
 4. `docs/mvp-capability-plan.md` — approved 2026-10-02.
 5. `docs/current-state.md` — this handoff.
+6. `docs/technical/`, `docs/estimation.md`, `docs/delivery-report.md` — release map. They do not replace the requirements or the deploy file.
 
 ## OpenSpec Status
 
-Five baseline specs. Active changes: none. Archived: `2026-10-02-add-request-intake`, `2026-10-02-add-requirement-generation`, `2026-10-02-add-result-review`, `2026-10-02-add-generation-failure`.
+Five baseline specs. Active changes: none. Archived slices: `2026-10-02-add-request-intake`, `2026-10-02-add-requirement-generation`, `2026-10-02-add-result-review`, `2026-10-02-add-generation-failure`. Closed proposals, kept out of the slice archive: `docs/qa/process-improvements/` (`improve-PD-1` applied, `improve-PD-2` applied, `improve-PD-3` through `improve-PD-5` not adopted).
 
 ## Completed Changes
 
@@ -76,13 +86,16 @@ From `submissions/Maryna-Lakei/`: `npm run lint`, `npm run test:run`, `npm run t
 
 ## Environment / Deployment
 
-- Target host: Vercel (TC-6). No database, auth, or email (TC-3).
-- LLM API key stays in server environment variables only. The owner verified a live call with local `.env.local` on 2026-10-02. Do not commit that file or the key.
+- Production URL: https://ai-requirements-assistant-umber.vercel.app. Vercel project `marynalakei-png/ai-requirements-assistant`. Deployment `dpl_rGZG9Z5czhWLhWrPdAyv3fNLK24u`. Evidence: `docs/qa/deploy-verification.json`.
+- `LLM_API_KEY` is a Vercel Production secret. `LLM_MODEL` is `gpt-4.1-mini`. `REQUIREMENTS_MODEL_MODE` is unset in production. Fake mode is tests only. Do not read, print, or commit `.env.local`.
+- No database, auth, email, or payments (TC-3).
 - Project directory: `submissions/Maryna-Lakei/` on branch `capstone-project`. Course root files (`README.md`, `RUBRIC.md`, `.github/PULL_REQUEST_TEMPLATE.md`) stay untouched.
+- As of 2026-10-03 13:26 Europe/Kyiv, `HEAD` was `47800573915f20c69a4df89ae4218d606d919f14` and the stored upstream `origin/capstone-project` was `10269e4839fe4b42c05e88ef340b702ad332d012`. No fetch was run. The final release commit and push are not done.
 
 ## Agent Rules / Gotchas
 
-- Scope and the capability plan are approved. All four slices are archived. Phase 6 evidence is committed. Do not start Phase 7 until the owner asks. Deploy evidence is still missing. Visual fidelity stays NOT-EARNED.
+- Scope and the capability plan are approved. All four slices are archived. Phase 7 release documentation is in the working tree and is not the final release commit. Visual fidelity stays NOT-EARNED. Do not add `quality/visual-parity.config.json`. Do not amend commit `10269e4`. Do not apply PD-3, PD-4, or PD-5. Do not rewrite history to improve trajectory process-order or intake in-scope scores. Those findings stay as written in `docs/qa/trajectory-eval-report.md`.
 - This MVP has no database and no accounts (TC-3). Do not add a seed helper, login tests, or a pixel-parity config to force a later gate green.
+- **Last completed gate** in this file stays `none`. Do not write G7 or any gate id as completed.
 - Do not renumber FR/NFR/TC/BC ids.
 - Do not archive OpenSpec changes before implementation and smoke test.

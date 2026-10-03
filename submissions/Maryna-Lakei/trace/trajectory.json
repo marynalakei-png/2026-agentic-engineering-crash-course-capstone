@@ -10,7 +10,7 @@
     },
     {
       "slice": "2026-10-02-add-request-intake",
-      "reviewEvidence": "missing",
+      "reviewEvidence": "clean",
       "trailerCommits": 1,
       "libDomains": [],
       "processComplete": true
@@ -32,10 +32,5 @@
   ],
   "overlaps": [],
   "failures": [],
-  "warnings": [
-    {
-      "check": "review-evidence",
-      "msg": "2026-10-02-add-request-intake: review-findings.json is missing (review must have run clean before archive)"
-    }
-  ]
+  "warnings": []
 }

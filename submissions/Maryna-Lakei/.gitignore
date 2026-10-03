@@ -8,3 +8,5 @@ test-results/
 blob-report/
 .env
 .env.local
+.vercel
+.env*

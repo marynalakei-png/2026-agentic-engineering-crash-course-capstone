@@ -6,12 +6,12 @@ It does NOT verify test-first ordering or test integrity (not derivable from
 one-commit-per-slice history) — those are graded by the trajectory-eval workflow.
 
 Scope: 4 archived slice(s).
-Result: PASS, 1 warning(s)
+Result: PASS
 
 | Slice | Review evidence | Trailer commits | design+tasks | lib domains touched |
 |---|---|---|---|---|
 | 2026-10-02-add-generation-failure | clean | 1 | yes | - |
-| 2026-10-02-add-request-intake | **missing** | 1 | yes | - |
+| 2026-10-02-add-request-intake | clean | 1 | yes | - |
 | 2026-10-02-add-requirement-generation | clean | 1 | yes | - |
 | 2026-10-02-add-result-review | clean | 1 | yes | - |
 
@@ -25,4 +25,4 @@ None.
 
 ## Warnings
 
-- **review-evidence**: 2026-10-02-add-request-intake: review-findings.json is missing (review must have run clean before archive)
+None.

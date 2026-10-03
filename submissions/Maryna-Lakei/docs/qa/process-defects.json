@@ -58,7 +58,7 @@
       "proposedFix": {
         "targetFile": "docs/qa/deploy-verification.json",
         "sketch": "Do not change the acceptance check, do not waive NFR-2, and do not commit a hand-written deploy report. Deploy for real and commit the report that deploy writes. scripts/check-deploy.mjs already requires status passed|pass|ok|green and a non-empty url.",
-        "proposalDir": "openspec/changes/improve-PD-1/"
+        "proposalDir": "docs/qa/process-improvements/2026-10-03-improve-PD-1/"
       },
       "status": "resolved",
       "correctionIds": []
@@ -87,7 +87,7 @@
       "proposedFix": {
         "targetFile": "factory-lock.json",
         "sketch": "Human decision only: reseal the lock to the on-disk commit-msg hash. Restoring the locked bytes would break commits, because the hook absolutizes the message path before cd in this nested project. The same commit adds quality/coverage-baseline.json and quality/eval-baseline.json to the lock. Do not apply it here. Do not add quality/visual-parity.config.json.",
-        "proposalDir": "openspec/changes/improve-PD-2/"
+        "proposalDir": "docs/qa/process-improvements/2026-10-03-improve-PD-2/"
       },
       "status": "resolved",
       "correctionIds": []
@@ -131,9 +131,9 @@
       "proposedFix": {
         "targetFile": "docs/qa/risk-register.md",
         "sketch": "Correct the stale citations in the risk register, QA README, traceability matrix, and a post-signature addendum on the acceptance report. Do not hand-edit automated-verification-latest.md. Do not treat the correction as a green G6, and do not add a visual-parity config.",
-        "proposalDir": "openspec/changes/improve-PD-3/"
+        "proposalDir": "docs/qa/process-improvements/2026-10-03-improve-PD-3/"
       },
-      "status": "proposed",
+      "status": "not-adopted",
       "correctionIds": []
     },
     {
@@ -160,9 +160,9 @@
       "proposedFix": {
         "targetFile": "scripts/ledger-report.mjs",
         "sketch": "When any check is still red, or unmetContracts is greater than 0, print Result: FAIL and exit 1. Do not fold that state into PASS with a warning. Do not waive NFR-2 to make the headline green.",
-        "proposalDir": "openspec/changes/improve-PD-4/"
+        "proposalDir": "docs/qa/process-improvements/2026-10-03-improve-PD-4/"
       },
-      "status": "proposed",
+      "status": "not-adopted",
       "correctionIds": []
     },
     {
@@ -189,9 +189,9 @@
       "proposedFix": {
         "targetFile": "scripts/qa-verify.mjs",
         "sketch": "Keep running later battery members after a FAIL so the report records them. Overall stays Fail when any member fails. When visual-fidelity then prints NOT-EARNED, leave it NOT-EARNED. Do not add quality/visual-parity.config.json.",
-        "proposalDir": "openspec/changes/improve-PD-5/"
+        "proposalDir": "docs/qa/process-improvements/2026-10-03-improve-PD-5/"
       },
-      "status": "proposed",
+      "status": "not-adopted",
       "correctionIds": []
     },
     {
@@ -202,7 +202,7 @@
         {
           "pointer": "docs/qa/process-health.md:17",
           "quote": "Uncommitted-work age (trailing dirty streak) | 3029m 50s (30 event(s) since 2026-09-30T15:55:59.991Z)",
-          "note": "Every ledger event sits in one dirty streak of about 50 hours. trace/process-health.json uncommittedWork.dirtyStreakEvents is 30. This has not by itself printed an overall Pass."
+          "note": "Every ledger event sits in one dirty streak of about 50 hours. trace/process-health.json uncommittedWork.dirtyStreakEvents is 30. Resolved by the Phase 7 release commit of the governed tree. No check script was changed. A ledger line appended by the post-commit hook after that commit is telemetry, not a new product change."
         }
       ],
       "metric": {
@@ -215,7 +215,7 @@
         "sketch": "Commit the governed project tree so later ledger events are not born inside this dirty streak. No check change is proposed.",
         "proposalDir": ""
       },
-      "status": "open",
+      "status": "resolved",
       "correctionIds": []
     }
   ]
